@@ -49,28 +49,10 @@
 					</label>
 				</div>
 				<div>
-					<label>
-						Наименование содержит
-						<input size="20" type="text" name="displayName-0" value="{$req/req:displayName}"/>
-					</label>
-				</div>
-				<div>
-					<label>
-					Форма отчета
-					<select name="formReport-0">
-						<option selected="selected">html</option>
-						<option >pdf</option>
-					</select>
-					</label>
-				</div>
-				<div>
 					<button  type="submit">Отправить</button>
 				</div>
 			</fieldset>
 		</form>
-
-		<br/>
-
 		<xsl:if test="$req/following-sibling::*">
 			<table class="report" summary="Тестовый отчет">
 				<caption>
@@ -81,8 +63,6 @@
 				<tr>
 					<th>Дата</th>
 					<th>Наименование</th>
-					<th>Ключевые слова</th>
-					<th>Удален</th>
 				</tr>
 				<xsl:for-each select="obj:Document">
 					<tr>
@@ -93,26 +73,6 @@
 							<a href="document.php?objectId-0={obj:objectId}">
 								<xsl:value-of select="obj:displayName"/>
 							</a>
-						</td>
-						<td>
-							<xsl:value-of select="obj:keywords"/>
-						</td>
-						<td>
-
-							<xsl:variable name="deleted" select="obj:deleted"/>
-
-<!--							Переменные для отображения русских слов Да Нет для @deleted-->
-							<xsl:variable name="da">Да</xsl:variable>
-							<xsl:variable name="net">Нет</xsl:variable>
-
-							<xsl:choose>
-								<xsl:when test = "$deleted='true'">
-									<xsl:value-of select="$da"/>
-								</xsl:when>
-								<xsl:when test = "$deleted='false'">
-									<xsl:value-of select="$net"/>
-								</xsl:when>
-							</xsl:choose>
 						</td>
 					</tr>
 				</xsl:for-each>

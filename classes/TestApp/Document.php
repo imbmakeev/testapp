@@ -138,6 +138,35 @@ class TestApp_Document extends Adaptor_XMLBase implements Adaptor_Array {
 			if($this->keyId!==NULL) {$xw->writeElement("keyId",$this->keyId);}
 		if ($mode&Adaptor_XML::ENDELEMENT) $xw->endElement();
 	}
+    /**
+     * Вывод в XMLWriter для Pdf
+     * @codegen true
+     * @param XMLWriter $xw
+     * @param string $xmlname Имя корневого узла
+     * @param int $mode
+     */
+    public function toXmlWriterPdf(XMLWriter &$xw,$xmlname=NULL,$xmlns=NULL,$mode=Adaptor_XML::ELEMENT){
+        $xmlname=$xmlname?$xmlname:"Document";
+        $xmlns=$xmlns?$xmlns:"";
+        if ($mode&Adaptor_XML::STARTELEMENT) $xw->startElement($xmlname);
+        if($this->objectId!==NULL) {$xw->writeAttribute("objectId",$this->objectId);}
+        if($this->createDate!==NULL) {$xw->writeAttribute("createDate",$this->createDate->LogicalToXSD());}
+        if($this->createUid!==NULL) {$xw->writeAttribute("createUid",$this->createUid);}
+        if($this->modifyDate!==NULL) {$xw->writeAttribute("modifyDate",$this->modifyDate->LogicalToXSD());}
+        if($this->modifyUid!==NULL) {$xw->writeAttribute("modifyUid",$this->modifyUid);}
+        if($this->deleteDate!==NULL) {$xw->writeAttribute("deleteDate",$this->deleteDate->LogicalToXSD());}
+        if($this->deleteUid!==NULL) {$xw->writeAttribute("deleteUid",$this->deleteUid);}
+        if($this->deleted!==NULL) {$xw->writeAttribute("deleted",$this->deleted);}
+        if($this->containerId!==NULL) {$xw->writeAttribute("containerId",$this->containerId);}
+        if($this->containerType!==NULL) {$xw->writeAttribute("containerType",$this->containerType);}
+        if($this->chapterPath!==NULL) {$xw->writeAttribute("chapterPath",$this->chapterPath);}
+        if($this->displayName!==NULL) {$xw->writeAttribute("displayName",$this->displayName);}
+        if($this->description!==NULL) {$xw->writeAttribute("description",$this->description);}
+        if($this->keywords!==NULL) {$xw->writeAttribute("keywords",$this->keywords);}
+        if($this->docDate!==NULL) {$xw->writeAttribute("docDate",$this->docDate->LogicalToXSD());}
+        if($this->keyId!==NULL) {$xw->writeAttribute("keyId",$this->keyId);}
+        if ($mode&Adaptor_XML::ENDELEMENT) $xw->endElement();
+    }
 	/**
 	 * Чтение из  XMLReader
 	 * @codegen true
